@@ -13,7 +13,7 @@ import { chunk } from 'lodash-es'
  * - The "name" attribute is used across services to filter the type of message.
  * - The message body should contain the stringified JSON.
  */
-export class SnsMessagePublisher<T> {
+export class SnsMessagePublisher {
 	private readonly MAX_SNS_MESSAGE_PUBLISH_SIZE = 10 // AWS imposed limit.
 
 	constructor(
@@ -29,7 +29,7 @@ export class SnsMessagePublisher<T> {
 	 * Batch publishes messages to an SNS topic.
 	 * @param messages - Messages to send.
 	 */
-	async publish(...messages: T[]) {
+	async publish(...messages: Record<string, any>[]) {
 		const snsEventEntries: PublishBatchRequestEntry[] = messages.map(
 			(message) => ({
 				Id: randomUUID(),

@@ -48,9 +48,7 @@ export type GenericMetricPublishInput<
  */
 export class MetricsPublisher {
 	private readonly DEFAULT_METRIC_EVENT_VALUE: number = 1
-	private readonly messagePublisher: SnsMessagePublisher<
-		TeamMetricEvent | GenericMetricEvent
-	>
+	private readonly messagePublisher: SnsMessagePublisher
 
 	constructor(
 		topicArn: string,
@@ -60,9 +58,7 @@ export class MetricsPublisher {
 		private readonly onError: OnErrorFn = logError,
 		private readonly onPublish: OnPublishFn = tracePublish,
 	) {
-		this.messagePublisher = new SnsMessagePublisher<
-			TeamMetricEvent | GenericMetricEvent
-		>(
+		this.messagePublisher = new SnsMessagePublisher(
 			topicArn,
 			'MetricsEvent',
 			enableRetry,
