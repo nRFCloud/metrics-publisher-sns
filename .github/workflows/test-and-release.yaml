@@ -1,0 +1,36 @@
+name: Test and Release
+
+on: push
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  JSR_TOKEN: ${{ secrets.JSR_TOKEN }}
+
+permissions:
+  contents: write
+  issues: write
+  id-token: write
+
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.x"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci --no-audit
+
+      - name: Test
+        run: npm test
+
+      - name: Semantic release
+        continue-on-error: true
+        run: |
+          npm install -D @sebbo2002/semantic-release-jsr
+          npx semantic-release

@@ -1,0 +1,47 @@
+{
+  "name": "@nrfcloud/metrics-publisher-sns",
+  "version": "1.0.1",
+  "description": "The metrics publisher library offers a class that can be used by other services to streamline the process of pushing events to a SNS topic.",
+  "homepage": "https://github.com/nrfcloud/metrics-publisher-sns#readme",
+  "bugs": {
+    "url": "https://github.com/nrfcloud/metrics-publisher-sns/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nrfcloud/metrics-publisher-sns.git"
+  },
+  "author": "Nordic Semiconductor ASA | nordicsemi.no",
+  "license": "BSD-3-Clause",
+  "type": "module",
+  "main": "metrics-publisher.ts",
+  "scripts": {
+    "test": "node --test --experimental-transform-types ./*.test.ts"
+  },
+  "devDependencies": {
+    "@bifravst/prettier-config": "1.1.8",
+    "@types/lodash-es": "4.17.12",
+    "@types/node": "22.13.10",
+    "prettier": "3.5.3"
+  },
+  "prettier": "@bifravst/prettier-config",
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "remoteTags": true,
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@sebbo2002/semantic-release-jsr"
+    ]
+  },
+  "dependencies": {
+    "@aws-sdk/client-sns": "3.758.0",
+    "@nrfcloud/wait-for-it": "npm:@jsr/nrfcloud__wait-for-it@1.0.7",
+    "lodash-es": "4.17.21"
+  },
+  "engines": {
+    "node": ">=22",
+    "npm": ">=10"
+  }
+}
