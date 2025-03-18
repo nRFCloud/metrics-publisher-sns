@@ -7,6 +7,14 @@ to streamline the process of pushing events to a SNS topic.
 
 ## Usage
 
+Install the package from JSR:
+
+```bash
+npx jsr add @nrfcloud/metrics-publisher-sns
+```
+
+Use in your code:
+
 ```typescript
 import { MetricsPublisher } from "@nrfcloud/metrics-publisher-sns";
 const publisher = new MetricsPublisher("topicArn");
