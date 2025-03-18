@@ -16,24 +16,49 @@ type PublishInputBase = {
 	timeMs?: number
 }
 
+/**
+ * Input for publishing a metric event with a single numerical value.
+ */
 export type SingleMeasurePublishInput = PublishInputBase & {
+	/**
+	 * The numerical value of the metric.
+	 */
 	value?: number
 }
 
+/**
+ * Input for publishing a metric event with multiple named measures.
+ */
 export type MultiMeasurePublishInput = PublishInputBase & {
+	/**
+	 * An object containing named measures.
+	 * Each measure can be a number or a string.
+	 */
 	measures?: MultiMeasureMetricEvent['measures']
 }
 
 type PublishInputTypes = SingleMeasurePublishInput | MultiMeasurePublishInput
 
+/**
+ * Union type for all metric event publish inputs.
+ */
 export type PublishInput = GenericMetricPublishInput | TeamMetricPublishInput
 
+/**
+ * Input for publishing a metric event related to a specific team.
+ */
 type TeamMetricPublishInput<U extends PublishInputTypes = PublishInputTypes> =
 	U & TeamMetricEvent
 
+/**
+ * Input for publishing a metric event not tied to a specific team.
+ */
 export type GenericMetricPublishInput<
 	U extends PublishInputTypes = PublishInputTypes,
 > = U & {
+	/**
+	 * Unique identifier for this specific event.
+	 */
 	id?: UUID
 }
 
@@ -70,6 +95,7 @@ export class MetricsPublisher {
 
 	/**
 	 * Publish MetricEvents to a SNS topic.
+	 *
 	 * @param args - Inputs used to construct the MetricEvent objects that are sent to the SNS topic.
 	 * @throws Error if the SNS client fails to publish the MetricEvent.
 	 */
@@ -94,6 +120,7 @@ export class MetricsPublisher {
 
 	/**
 	 * Convert the to-be-published input arguments into MetricEvent types that SNS consumes.
+	 *
 	 * @param publishInputs - Publish input arguments.
 	 * @returns Mapped array of MetricEvents.
 	 */
@@ -118,6 +145,7 @@ export class MetricsPublisher {
 
 	/**
 	 * Convert either the single or multi measure object structure.
+	 *
 	 * @param publishInput - Publish input.
 	 * @returns Partial measure object in either TeamMetricEvent or GenericMetricEvent
 	 */
@@ -142,7 +170,14 @@ export class MetricsPublisher {
 	}
 }
 
+/**
+ * Function to handle errors that occur during metric event publishing.
+ */
 export type OnErrorFn = (error: Error) => void
+
+/**
+ * Default error handler that logs the error to the console.
+ */
 export const logError: OnErrorFn = (error) =>
 	console.error(
 		`Error when attempting to publish metrics event(s): ${error.message}`,

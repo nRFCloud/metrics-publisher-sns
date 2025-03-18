@@ -67,6 +67,14 @@ export class SnsMessagePublisher {
 	}
 }
 
+/**
+ * Function to handle the publishing of a batch of messages.
+ * This function is called after a batch of messages has been published to SNS.
+ */
 export type OnPublishFn = (subset: PublishBatchRequestEntry[]) => void
+
+/**
+ * Default publish handler that traces the published batch to the console.
+ */
 export const tracePublish: OnPublishFn = (subset) =>
 	console.trace(`Published batch to SNS: ${JSON.stringify(subset)}`)
