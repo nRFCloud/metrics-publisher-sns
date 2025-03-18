@@ -12,12 +12,10 @@ import type { TeamMetricEvent } from './types.ts'
 
 enum EventNames {
 	AGPS_FILE_SIZE_FETCHED = 'AgpsFileSizeFetched',
-	AGPS_LOCATION_REQUEST_PROCESSED = 'AgpsLocationRequestProcessed',
 	CELL_LOCATION_REQUEST_PROCESSED = 'CellLocationRequestProcessed',
 	GROUND_FIX_LOCATION_REQUEST_PROCESSED = 'GroundFixLocationRequestProcessed',
 	PGPS_CLIENT_REQUEST_PROCESSED = 'PgpsClientRequestProcessed',
 	SOME_GENERIC_EVENT = 'SomeGenericEvent',
-	USER_LOGGED_IN = 'UserLoggedIn',
 }
 
 void describe('Metrics publisher test', () => {
