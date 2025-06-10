@@ -20,7 +20,7 @@
   "devDependencies": {
     "@bifravst/prettier-config": "1.1.8",
     "@types/lodash-es": "4.17.12",
-    "@types/node": "22.15.30",
+    "@types/node": "22.15.31",
     "prettier": "3.5.3"
   },
   "prettier": "@bifravst/prettier-config",
