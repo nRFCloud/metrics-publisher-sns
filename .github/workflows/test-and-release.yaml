@@ -30,7 +30,6 @@ jobs:
         run: npm test
 
       - name: Semantic release
-        continue-on-error: true
         run: |
           npm install -D @sebbo2002/semantic-release-jsr
           npx semantic-release
