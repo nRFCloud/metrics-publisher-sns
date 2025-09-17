@@ -5,6 +5,10 @@
     {
       "matchDepTypes": ["peerDependencies"],
       "semanticCommitType": "fix"
+    },
+    {
+      "matchPackagePatterns": ["@nrfcloud/*"],
+      "minimumReleaseAge": null
     }
   ]
 }
