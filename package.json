@@ -36,7 +36,7 @@
     ]
   },
   "dependencies": {
-    "@aws-sdk/client-sns": "3.965.0",
+    "@aws-sdk/client-sns": "3.966.0",
     "@nrfcloud/wait-for-it": "npm:@jsr/nrfcloud__wait-for-it@1.0.7",
     "lodash-es": "4.17.22"
   },
