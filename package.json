@@ -38,7 +38,7 @@
   "dependencies": {
     "@aws-sdk/client-sns": "3.971.0",
     "@nrfcloud/wait-for-it": "npm:@jsr/nrfcloud__wait-for-it@1.0.7",
-    "lodash-es": "4.17.22"
+    "lodash-es": "4.17.23"
   },
   "engines": {
     "node": ">=22",
